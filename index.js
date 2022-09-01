@@ -15,7 +15,7 @@ function init(){
 }
 
 function managerProfile () {
-    inquirer.prompt ([
+   inquirer.prompt ([
         {
             type: 'input',
             name: 'name',
@@ -45,7 +45,7 @@ function managerProfile () {
             message: 'What is the team managers office number?'
         }
     ])
-    .then(({name, id, emaill, officeNumber}) => {
+    .then(({name, id, email, officeNumber}) => {
         this.Manager = new Manager(name, id, email, officeNumber);
         teamArr.push(this.Manager)
         // console.log(manager);
@@ -56,19 +56,116 @@ function managerProfile () {
 };
 
 
-
-
 function addEmployee(){
     inquirer.prompt([
         {
             type: 'list',
             name: 'role',
             message: 'Please choose an employees role?',
-            choices: ['Engineer', 'intern', 'Done']
+            choices: ['Engineer', 'Intern', 'Done']
         }
 ])
+.then (({role}) => {
+    if (role === 'Engineer'){
+        engineerProfile();
+    } else if (role === 'Intern') {
+        internProfile();
+    }else{
+        const filedata = generateHTML(teamArr);
+        writeFile(filedata, teamArr);
+    }
+})
 
-}
+};
+
+function engineerProfile() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: 'What is the engineers name?',
+            validate: nameInput => {
+                if(nameInput){
+                    return true;
+                } else {
+                    console.log ('Please enter the managers name');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: 'What is the engineers id?'
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'What is the engineers email address?'
+        },
+        {
+            type: 'input',
+            name: 'github',
+            message: 'What is the engineers GitHub username?'
+        }
+    ])
+    .then(({name, id, email, github}) => {
+        this.Engineer = new Engineer(name, id, email, github);
+        teamArr.push(this.Engineer)
+        addEmployee();
+
+    })
+};
+
+function internProfile (){
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: 'What is the interns name?',
+            validate: nameInput => {
+                if(nameInput){
+                    return true;
+                } else {
+                    console.log ('Please enter the managers name');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: 'What is the interns id?'
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'What is the interns email address?'
+        },
+        {
+            type: 'input',
+            name: 'school',
+            message: 'What school does the intern go to?'
+        }
+    ])
+    .then(({name, id, email, school}) => {
+        this.Intern = new Intern(name, id, email, school);
+        teamArr.push(this.Intern)
+        addEmployee();
+
+    })
+};
+
+function writeFile(filedata, data){
+    fs.writeFile('./dist/index.html', data, (err) => {
+        if (err) {
+            console.log(err);
+            return;
+        }else {
+            console.log("Team profile has been created")
+        }
+    })
+};
 
 
 
