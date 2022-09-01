@@ -10,7 +10,11 @@ const generateHTML = require('./src/generateHTML');
 //empty array for team profiles
 const teamArr = [];
 
-function manager() {
+function init(){
+    managerProfile();
+}
+
+function managerProfile () {
     inquirer.prompt ([
         {
             type: 'input',
@@ -33,7 +37,7 @@ function manager() {
         {
             type: 'input',
             name: 'email',
-            message: 'What is the team managers email address?',
+            message: 'What is the team managers email address?'
         },
         {
             type: 'input',
@@ -41,5 +45,31 @@ function manager() {
             message: 'What is the team managers office number?'
         }
     ])
+    .then(({name, id, emaill, officeNumber}) => {
+        this.Manager = new Manager(name, id, email, officeNumber);
+        teamArr.push(this.Manager)
+        // console.log(manager);
+        addEmployee();
+
+    })
+
+};
+
+
+
+
+function addEmployee(){
+    inquirer.prompt([
+        {
+            type: 'list',
+            name: 'role',
+            message: 'Please choose an employees role?',
+            choices: ['Engineer', 'intern', 'Done']
+        }
+])
 
 }
+
+
+
+init();
