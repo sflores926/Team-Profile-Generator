@@ -71,8 +71,8 @@ function addEmployee(){
     } else if (role === 'Intern') {
         internProfile();
     }else{
-        const filedata = generateHTML(teamArr);
-        writeFile(filedata, teamArr);
+        const fileData = generateHTML(teamArr);
+        writeFile(fileData, teamArr);
     }
 })
 
@@ -156,8 +156,8 @@ function internProfile (){
     })
 };
 
-function writeFile(filedata, data){
-    fs.writeFile('./dist/index.html', data, (err) => {
+function writeFile(filedata, teamArr){
+    fs.writeFile('./dist/index.html', filedata, (err) => {
         if (err) {
             console.log(err);
             return;
