@@ -43,23 +43,23 @@ const generateHTML = teamProfiles => {
 // Creating an array get cards to page 
 const generateTeamPage = team => {
     const teamCards = [];
-
+// console.log(team)
     for (let i = 0; team.length > i; i++) {
         const teamProf = team[i]
-        const teamRole = teamProf.role;
-
+        const teamRole = teamProf.getRole();
+console.log("role", teamRole)
         if (teamRole === 'Manager') {
-            const manager = managerProfile(teamCards);
+            const manager = managerProfile(teamProf);
             teamCards.push(manager);
         }
 
         if (teamRole === 'Engineer') {
-            const engineer = engineerProfile(teamCards);
+            const engineer = engineerProfile(teamProf);
             teamCards.push(engineer);
         }
 
         if (teamRole === 'Intern') {
-            const intern = internProfile(teamCards);
+            const intern = internProfile(teamProf);
             teamCards.push(intern);
         }
     }
