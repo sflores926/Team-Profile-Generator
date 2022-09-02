@@ -62,4 +62,4 @@ THEN I exit the application, and the HTML is generated
 
 ## Demo
 
-![gif of how to create team profiles through node.js](./Assets/screencapture-file-Users-sflores-Desktop-Team-Profile-Generator-dist-index-html-2022-09-01-17_12_03.png)[Untitled_ Sep 1, 2022 10_46 PM.webm](https://user-images.githubusercontent.com/106363593/188050163-b48f358a-2d27-437d-b30c-264fb96af557.webm)
+![gif of how to create team profiles through node.js](./Assets/screencapture-file-Users-sflores-Desktop-Team-Profile-Generator-dist-index-html-2022-09-01-17_12_03.png)
