@@ -80,7 +80,7 @@ const managerProfile = manager => {
             <ul class="list-group">
                 <li class="list-group-item">ID: ${manager.id}</li>
                 <li class="list-group-item">Email: <a
-                    href="malito:${manager.email}">${manager.email}</a></li>
+                    href="mailto:${manager.email}">${manager.email}</a></li>
                 <li class="list-group-item">Office number: ${manager.officeNumber} </li>
             </ul>
         </div>
@@ -100,7 +100,7 @@ const engineerProfile = engineer => {
             <ul class="list-group">
                 <li class="list-group-item">ID: ${engineer.id}</li>
                 <li class="list-group-item">Email: <a
-                    href="malito:${engineer.email}">${engineer.email}</a></li>
+                    href="mailto:${engineer.email}">${engineer.email}</a></li>
                 <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.github}">${engineer.github}</a>
                 </li>
             </ul>
@@ -121,7 +121,7 @@ const internProfile = intern => {
             <ul class="list-group">
                 <li class="list-group-item">ID: ${intern.id}</li>
                 <li class="list-group-item">Email: <a
-                href="malito:${intern.email}">${intern.email}</a></li>
+                href="mailto:${intern.email}">${intern.email}</a></li>
                 <li class="list-group-item">School: ${intern.school}</li>
             </ul>
          </div>
